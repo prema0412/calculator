@@ -1,0 +1,106 @@
+
+
+body {
+
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    width: auto;
+    height: auto;
+    
+}    
+    
+
+
+.calc {
+
+    display: grid;
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    justify-content: center;
+    align-content: center;
+    height:750px;
+    width:500px;
+    border: 2px solid silver;
+    border-radius: 8%;
+    position: relative;
+    margin-left: 25%;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    
+    
+    
+
+    &__sign, &__number, &__operator, &__zero, &__output
+    {
+        cursor: pointer;
+        font-size: 30px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        // border: 1px solid blue;
+        background: black;
+        color: silver;
+        text-align: center;
+        // outline: none;
+    }
+
+    
+
+    &__output {
+        grid-column: 1 / -1;
+        grid-row: span 2;
+        display: flex;
+        align-self: flex-end;
+        justify-content: flex-end;
+        padding: 10px;
+        font-size: 50px;
+        margin-right: 10px;
+        
+        
+    }   
+    
+    &__sign, &__number, &__operator
+    {
+        border-radius: 50%;
+        margin-right: .25em;
+        margin-left: .25em;
+        margin-bottom: .20em;
+        height: 85px;
+        width: 85px;
+        padding: 5px;
+
+    }   
+    
+    
+    &__sign {
+        background: silver;
+        color: black;
+    }
+
+    &__number {
+        background: rgb(22, 22, 22);
+    }
+
+    &__operator {
+        background: #fcc602 ;
+        color: black    ;
+
+    }
+
+    &__zero {
+        grid-column: span 2;
+        border-radius: 45%;
+        height: 90px;
+        width: 180px;
+
+
+    }
+
+    &__sign, &__number, &__operator, &__zero, &__output
+    {
+        :hover {
+            background-color: rgb(255, 40, 40);
+        }
+    }    
+
+
+ }
