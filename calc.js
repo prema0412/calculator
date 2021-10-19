@@ -1,12 +1,10 @@
 
-
-
-let previousNUmber = '0'
-let currentNumber = ''
-let displayNumber = "0"
+let displayNumber = '0'
 let enteredNumber = ''
 let previousResult = '0'
-let currentResult = ''
+
+let savedOperator = ''
+let chosenOperator = ''
 
 
 //function to display entered numbers on output panel
@@ -22,13 +20,12 @@ const displayInputs = ( evnt => {
     enteredNumber = evnt.target.innerHTML
 
 
-    if (displayNumber == 0)
+    if (displayNumber == '0')
     {
         displayNumber = ''
     }   
 
     // User shall not enter more than one decimal
-    
     if ( displayNumber.includes('.')  && (enteredNumber == '.') )
     {
         return
@@ -43,22 +40,11 @@ const displayInputs = ( evnt => {
     }
    
         displayNumber += enteredNumber
-        previousResult = displayNumber
-
-        console.log(displayNumber);
-        console.log(previousResult);
-    
-    
-    // displayNumber += enteredNumber
-    // currentNumber = displayNumber
-    // previousNUmber = displayNumber
-    // previousResult = displayNumber
 
     let outPut = document.getElementById('display')
 
     outPut.innerHTML = displayNumber
 
-    // console.log(typeof(displayNumber))
 
 
 })
@@ -67,10 +53,6 @@ const displayInputs = ( evnt => {
 
 const addSign = () => {
     
-        console.log(displayNumber + " " + Math.abs(displayNumber));
-
-       
-       
         switch (Math.sign(displayNumber)) {
             case -1:
             case -0:    
@@ -86,165 +68,96 @@ const addSign = () => {
 
 }
 
-// const addDecimal = () => {
     
+//operator will have to be saved for some operations as second input will come later
 
-//     console.log(displayNumber);
+const chooseOperator = ( evnt => {
 
-   
-   
-//     switch (toString(displayNumber).includes('.')) {
-//         case true:    
-//             break;
-//         case false:
-//              displayNumber = displayNumber + document.getElementById('decimaml') 
-//         default:
-//             break;
-//     }
-//     outPut.innerHTML = displayNumber
-// }
-    
+    chosenOperator = evnt.target.innerHTML
+
+    console.log("chosen" + " " + chosenOperator);
+    console.log("saved" + " " + savedOperator);
+
+    if (displayNumber == '0')  return
+
+    if  (chosenOperator === '%') 
+
+    {
+        previousResult = displayNumber
+        calculate(chosenOperator)
+        displayNumber = previousResult
+        return
+    }
+
+    if  (chosenOperator === '=') 
+
+    {
+        calculate(savedOperator)
+        // displayNumber = '0'
+        displayNumber = previousResult
+            previousResult = '0'
+            savedOperator = ''
+            chosenOperator = ''
+        return
+    }
+
+  if  (savedOperator === '') {
+
+        savedOperator = chosenOperator
+        previousResult = displayNumber
+        displayNumber = '0'
+        return
+       
+  }    
+
+//   if (previousResult != '' && previousResult != 0)  {
+     calculate(savedOperator) 
+//   }
+
+    savedOperator = chosenOperator  
+    console.log("chosen" + " " + chosenOperator);
+    console.log("saved" + " " + savedOperator); 
+    displayNumber = '0'
+})    
 
 //function to perform calculation
 
-const performcalculation = ( evnt => {
+const calculate = ( operator => {
 
-    selectedOperator = evnt.target.innerHTML
+    console.log(operator)
+    console.log(previousResult);
+    console.log(displayNumber);
 
-    console.log(selectedOperator);
-    switch (selectedOperator) {
+    switch (operator) {
+
         case '+':
-
-            console.log(displayNumber);
-            console.log(previousResult);
-
-            if ( previousResult == 0)
-
-            {
-                previousResult = displayNumber
-                displayNumber = 0
-            }
-            else {
-                previousResult = parseFloat(previousResult) + parseFloat(displayNumber)
-                displayNumber = 0
-            }
-            console.log(displayNumber)
-            console.log(previousResult)
+            previousResult = parseFloat(previousResult) + parseFloat(displayNumber)
             outPut.innerHTML = previousResult
             break;
 
-            case '-':
-
-                console.log(displayNumber);
-                console.log(previousResult);
-    
-
-                if ( previousResult == 0)
-    
-                {
-                    previousResult = displayNumber
-                    displayNumber = 0
-                }
-                else {
-                    previousResult = parseFloat(previousResult) - parseFloat(displayNumber)
-                    displayNumber = 0
-                }
-                console.log(displayNumber)
-                console.log(previousResult)
-                outPut.innerHTML = previousResult
-                break;
-
-            case 'x':
-
-            console.log(displayNumber);
-            console.log(previousResult);
-
-            if ( previousResult == 0)
-
-
-            
-            {
-                previousResult = displayNumber
-                displayNumber = 0
-            }
-            else {
-
-                if  ( (displayNumber != 0 ) && (previousResult != displayNumber) ) {
-
-                    previousResult = parseFloat(previousResult) * parseFloat(displayNumber)
-                    displayNumber = 0
-                }
-               
-            }
-            console.log(displayNumber)
-            console.log(previousResult)
+        case '-':
+            previousResult = parseFloat(previousResult) - parseFloat(displayNumber)
             outPut.innerHTML = previousResult
             break;
 
-            case '÷':
+        case 'x':
+            previousResult = parseFloat(previousResult) * parseFloat(displayNumber)
+            outPut.innerHTML = previousResult.toLocaleString("en-IN")
+            break;
 
-            console.log(displayNumber);
-            console.log(previousResult);
-
-            if ( previousResult == 0)
-
-            {
-                previousResult = displayNumber
-                previousNUmber = displayNumber
-                displayNumber = 0
-            }
-            else {
-
-                if  (!(displayNumber == 0 ) ) {
-                    
-                    previousResult = parseFloat(previousResult) / parseFloat(displayNumber)
-                    displayNumber = 0
-                }
-               
-            }
-            console.log(displayNumber)
-            console.log(previousResult)
+        case '÷':                  
+            previousResult = parseFloat(previousResult) / parseFloat(displayNumber)
             outPut.innerHTML = previousResult
             break;
 
+        case '%':
+            previousResult = (parseFloat(previousResult) / 100)
+            outPut.innerHTML = previousResult
+            break;    
 
-            case '%':
-
-                console.log(displayNumber);
-                console.log(previousResult);
-    
-                if ( previousResult == 0) previousResult = displayNumber
-    
-                
-                    
-                previousResult = (parseFloat(previousResult) / 100)
-                displayNumber = 0
-
-                console.log(displayNumber)
-                console.log(previousResult)
-                outPut.innerHTML = previousResult
-                break;    
-
-                case '=':
-
-                    console.log(displayNumber);
-                    console.log(previousResult);
-        
-    
-                    if ( previousResult == 0)
-        
-                    {
-                        previousResult = displayNumber
-                        displayNumber = 0
-                    }
-                    // else {
-                    //     previousResult = parseFloat(previousResult) - parseFloat(displayNumber)
-                    //     displayNumber = 0
-                    // }
-                   
-                    outPut.innerHTML = previousResult
-                    displayNumber = 0
-                    break;    
+        case '=':
+            outPut.innerHTML = previousResult
+            break;    
     
         default:
             break;
@@ -265,19 +178,14 @@ for ( i=0; i<numInputs.length; i++)
 
     
 }
-// numInputs.forEach( (numInput, index) => {
-//     numInput[index].addEventListener('click', () => {
-//         counter = counter++;
-//         alert("I am addded" + counter + "times")
-//     })
-// });
+
 
 //Add eventlistener to all operator buttons
 
 operators = document.getElementsByClassName('calc__operator')
 for ( i=0; i<operators.length; i++)
 {
-    operators[i].addEventListener('click', performcalculation)
+    operators[i].addEventListener('click', chooseOperator)
 
     
 }
@@ -290,26 +198,19 @@ let clearOption = document.getElementById('clear')
 clearOption.addEventListener('click', () => {
 
         if (clearOption.innerHTML == "AC") {
-            displayNumber = 0
-
-            previousNUmber = ''
-            previousResult = 0
-            currentNumber = ''
-            // console.log(previousNUmber);
+            displayNumber = '0'
+            previousResult = '0'
+            savedOperator = ''
+            chosenOperator = ''
+           
         }
 
         if(clearOption.innerHTML == "C") {
-
-            displayNumber = 0
+            displayNumber = '0'
             outPut.innerHTML = displayNumber
             clearOption.innerHTML = "AC"
-            // console.log(previousNUmber);
-
-            // console.log(displayNumber);
-            // let lengthOfDisplay = displayNumber.length
-            // // console.log(lengthOfDisplay);
-            // displayNumber = displayNumber.slice(0, lengthOfDisplay-1)
-            // outPut.innerHTML = displayNumber
+            console.log(displayNumber)
+            console.log(previousResult)
 
         }
 })

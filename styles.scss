@@ -10,7 +10,55 @@ body {
     
 }    
     
+@media (max-width: 768px)
 
+{
+    .calc {
+
+        display: grid;
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: minmax(100px, auto) repeat(5, 80px);
+        justify-content: center;
+        align-content: center;
+        height:600px;
+        width:350px;
+        border: 2px solid silver;
+        border-radius: 8%;
+        position: absolute;
+        margin-left: 25%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+
+    
+
+    &__sign, &__number, &__operator
+    {
+        font-size: 20px;
+        border-radius: 50%;
+        margin-right: .15em;
+        margin-left: .15em;
+        margin-bottom: .15em;
+        height: 60px;
+        width: 60px;
+        padding: 2px;
+
+    }   
+
+    &__zero {
+        grid-column: span 2;
+        border-radius: 45%;
+        height: 60px;
+        width: 130px;
+
+
+    }
+
+    }
+}   
+
+@media (min-width: 768px)
+
+{
 
 .calc {
 
@@ -19,22 +67,50 @@ body {
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
     justify-content: center;
     align-content: center;
-    height:750px;
-    width:500px;
+    height:700px;
+    width:450px;
     border: 2px solid silver;
     border-radius: 8%;
-    position: relative;
+    position: absolute;
     margin-left: 25%;
-    margin-top: 3%;
-    margin-bottom: 5%;
+    margin-top: 1.4%;
+    margin-bottom: 4.2%;
+
+
+    &__sign, &__number, &__operator
+    {
+        font-size: 25px;
+        border-radius: 50%;
+        margin-right: .25em;
+        margin-left: .25em;
+        margin-bottom: .20em;
+        height: 80px;
+        width: 80px;
+        padding: 4px;
+
+    }   
+
     
-    
-    
+    &__zero {
+        grid-column: span 2;
+        border-radius: 45%;
+        height: 80px;
+        width: 160px;
+
+
+    }  
+
+}
+
+
+}
+     
+    .calc
+    {
 
     &__sign, &__number, &__operator, &__zero, &__output
     {
         cursor: pointer;
-        font-size: 30px;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         // border: 1px solid blue;
         background: black;
@@ -52,24 +128,13 @@ body {
         align-self: flex-end;
         justify-content: flex-end;
         padding: 10px;
-        font-size: 50px;
+        font-size: 40px;
         margin-right: 10px;
         
         
     }   
     
-    &__sign, &__number, &__operator
-    {
-        border-radius: 50%;
-        margin-right: .25em;
-        margin-left: .25em;
-        margin-bottom: .20em;
-        height: 85px;
-        width: 85px;
-        padding: 5px;
-
-    }   
-    
+   
     
     &__sign {
         background: silver;
@@ -82,25 +147,19 @@ body {
 
     &__operator {
         background: #fcc602 ;
-        color: black    ;
+        color: blue    ;
 
     }
 
-    &__zero {
-        grid-column: span 2;
-        border-radius: 45%;
-        height: 90px;
-        width: 180px;
-
-
-    }
+   
 
     &__sign, &__number, &__operator, &__zero, &__output
     {
         :hover {
-            background-color: rgb(255, 40, 40);
+            background-color: silver;
         }
     }    
 
 
  }
+

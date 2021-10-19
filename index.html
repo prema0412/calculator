@@ -8,13 +8,13 @@
 </head>
 <body>
     <div class="calc">
-        <div class = "calc__output" id="display">0</div>
+        <div class = "calc__output" id="display" data-cy="output">0</div>
 
         <button class="calc__sign calc__ac" id="clear">AC</button>
         <button class="calc__sign id="addSign" onclick="addSign()">+/-</button>
-        <button class="calc__sign calc__operator">%</button>
+        <button class="calc__sign calc__operator" data-cy="percentage">%</button>
         <button class="calc__operator">÷</button>
-        <button class="calc__number">7</button>
+        <button class="calc__number" data-cy="seven">7</button>
         <button class="calc__number">8</button>
         <button class="calc__number">9</button>
         <button class="calc__operator">x</button>
@@ -23,12 +23,12 @@
         <button class="calc__number">6</button>
         <button class="calc__operator">-</button>
         <button class="calc__number">1</button>
-        <button class="calc__number">2</button>
+        <button class="calc__number" data-cy="two">2</button>
         <button class="calc__number">3</button>
-        <button class="calc__operator">+</button>
+        <button class="calc__operator" data-cy="plus">+</button>
         <button class="calc__number calc__zero">0</button>
         <button class="calc__number calc__decimal" id="addDecimal">.</button>
-        <button class="calc__operator calc__equalTo">=</button>
+        <button class="calc__operator calc__equalTo" data-cy="equalTo">=</button>
 
     
 </div>  

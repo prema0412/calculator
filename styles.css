@@ -6,24 +6,74 @@ body {
   height: auto;
 }
 
-.calc {
-  display: grid;
-  grid-template-columns: repeat(4, 90px);
-  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
-  justify-content: center;
-  align-content: center;
-  height: 750px;
-  width: 500px;
-  border: 2px solid silver;
-  border-radius: 8%;
-  position: relative;
-  margin-left: 25%;
-  margin-top: 3%;
-  margin-bottom: 5%;
+@media (max-width: 768px) {
+  .calc {
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 80px);
+    justify-content: center;
+    align-content: center;
+    height: 600px;
+    width: 350px;
+    border: 2px solid silver;
+    border-radius: 8%;
+    position: absolute;
+    margin-left: 25%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .calc__sign, .calc__number, .calc__operator {
+    font-size: 20px;
+    border-radius: 50%;
+    margin-right: 0.15em;
+    margin-left: 0.15em;
+    margin-bottom: 0.15em;
+    height: 60px;
+    width: 60px;
+    padding: 2px;
+  }
+  .calc__zero {
+    grid-column: span 2;
+    border-radius: 45%;
+    height: 60px;
+    width: 130px;
+  }
+}
+@media (min-width: 768px) {
+  .calc {
+    display: grid;
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    justify-content: center;
+    align-content: center;
+    height: 700px;
+    width: 450px;
+    border: 2px solid silver;
+    border-radius: 8%;
+    position: absolute;
+    margin-left: 25%;
+    margin-top: 1.4%;
+    margin-bottom: 4.2%;
+  }
+  .calc__sign, .calc__number, .calc__operator {
+    font-size: 25px;
+    border-radius: 50%;
+    margin-right: 0.25em;
+    margin-left: 0.25em;
+    margin-bottom: 0.2em;
+    height: 80px;
+    width: 80px;
+    padding: 4px;
+  }
+  .calc__zero {
+    grid-column: span 2;
+    border-radius: 45%;
+    height: 80px;
+    width: 160px;
+  }
 }
 .calc__sign, .calc__number, .calc__operator, .calc__zero, .calc__output {
   cursor: pointer;
-  font-size: 30px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background: black;
   color: silver;
@@ -36,17 +86,8 @@ body {
   align-self: flex-end;
   justify-content: flex-end;
   padding: 10px;
-  font-size: 50px;
+  font-size: 40px;
   margin-right: 10px;
-}
-.calc__sign, .calc__number, .calc__operator {
-  border-radius: 50%;
-  margin-right: 0.25em;
-  margin-left: 0.25em;
-  margin-bottom: 0.2em;
-  height: 85px;
-  width: 85px;
-  padding: 5px;
 }
 .calc__sign {
   background: silver;
@@ -57,14 +98,8 @@ body {
 }
 .calc__operator {
   background: #fcc602;
-  color: black;
-}
-.calc__zero {
-  grid-column: span 2;
-  border-radius: 45%;
-  height: 90px;
-  width: 180px;
+  color: blue;
 }
 .calc__sign :hover, .calc__number :hover, .calc__operator :hover, .calc__zero :hover, .calc__output :hover {
-  background-color: #ff2828;
+  background-color: silver;
 }
