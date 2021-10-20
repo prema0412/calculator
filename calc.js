@@ -66,11 +66,13 @@ const addSign = () => {
     
         switch (Math.sign(displayNumber)) {
             case -1:
-            case -0:    
+            case -0:   
+                 displayNumber = (Math.abs(displayNumber)).toString()  
                 break;
             case 1:
             case 0:  
                  displayNumber = (-Math.abs(displayNumber)).toString() 
+                 break;
 
             default:
                 break;
