@@ -8,9 +8,10 @@ body {
     width: auto;
     height: auto;
     
+    
 }    
     
-@media (max-width: 768px)
+@media (max-width: 660vh)
 
 {
     .calc {
@@ -21,12 +22,14 @@ body {
         justify-content: center;
         align-content: center;
         height:600px;
-        width:350px;
+        width:400px;
+        // height: 80%;
+        // width: 80%;
         border: 2px solid silver;
-        border-radius: 8%;
+        border-radius: 6%;
         position: absolute;
-        margin-left: 25%;
-        margin-top: 2%;
+        margin-left: 40%;
+        margin-top: 5%;
         margin-bottom: 2%;
 
     
@@ -40,7 +43,8 @@ body {
         margin-bottom: .15em;
         height: 60px;
         width: 60px;
-        padding: 2px;
+        padding: 5px;
+        border: silver;
 
     }   
 
@@ -49,14 +53,32 @@ body {
         border-radius: 45%;
         height: 60px;
         width: 130px;
+        border: silver;
 
 
     }
+
+    &__output {
+        grid-column: 1 / -1;
+        grid-row: span 2;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        align-self: flex-end;
+        justify-content: space-evenly;
+        padding: 8px;
+        font-size: 25px;
+        margin-right: 2px;
+        margin-bottom: 5px;
+        
+        
+        
+    }   
 
     }
 }   
 
-@media (min-width: 768px)
+@media (min-width: 660vh)
 
 {
 
@@ -67,38 +89,60 @@ body {
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
     justify-content: center;
     align-content: center;
-    height:700px;
-    width:450px;
+    // height:700px;
+    // width:450px;
+    height:95%;
+    width:30%;
     border: 2px solid silver;
     border-radius: 8%;
     position: absolute;
-    margin-left: 25%;
+    margin-left: 40%;
     margin-top: 1.4%;
     margin-bottom: 4.2%;
+  
 
 
     &__sign, &__number, &__operator
     {
-        font-size: 25px;
+        font-size: 20px;
         border-radius: 50%;
         margin-right: .25em;
         margin-left: .25em;
         margin-bottom: .20em;
         height: 80px;
         width: 80px;
-        padding: 4px;
+        padding: 5px;
+        border: silver;
 
     }   
 
-    
+
     &__zero {
         grid-column: span 2;
         border-radius: 45%;
         height: 80px;
         width: 160px;
+        border: silver;
 
 
     }  
+
+    &__output {
+        grid-column: 1 / -1;
+        grid-row: span 2;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        align-self: flex-end;
+        justify-content: space-evenly;
+        padding: 8px;
+        font-size: 33px;
+        margin-right: 2px;
+        margin-bottom: 5px;
+        
+        
+        
+    }   
 
 }
 
@@ -118,22 +162,6 @@ body {
         text-align: center;
         // outline: none;
     }
-
-    
-
-    &__output {
-        grid-column: 1 / -1;
-        grid-row: span 2;
-        display: flex;
-        align-self: flex-end;
-        justify-content: flex-end;
-        padding: 10px;
-        font-size: 40px;
-        margin-right: 10px;
-        
-        
-    }   
-    
    
     
     &__sign {

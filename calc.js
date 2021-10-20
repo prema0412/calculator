@@ -26,7 +26,7 @@ const displayInputs = ( evnt => {
     }   
 
     // User shall not enter more than one decimal
-    if ( displayNumber.includes('.')  && (enteredNumber == '.') )
+    if ( (displayNumber.toString()).includes('.')  && (enteredNumber == '.') )
     {
         return
     }
@@ -34,10 +34,21 @@ const displayInputs = ( evnt => {
 
     // User shall not enter more than 9 digits at a time
 
-    if (displayNumber.length == 9)
+    let counter = 0
+
+    for (i=0; i<displayNumber.length; i++)
     {
+        if (displayNumber[i] != '.' && displayNumber[i] != '-') counter++
+
+        if (counter == 9)
         return
+
     }
+
+    // if (displayNumber.length == 9)
+    // {
+    //     return
+    // }
    
         displayNumber += enteredNumber
 
@@ -93,8 +104,8 @@ const chooseOperator = ( evnt => {
 
     {
         calculate(savedOperator)
-        // displayNumber = '0'
-        displayNumber = previousResult
+            displayNumber = '0'
+        // displayNumber = previousResult
             previousResult = '0'
             savedOperator = ''
             chosenOperator = ''
@@ -132,12 +143,12 @@ const calculate = ( operator => {
 
         case '+':
             previousResult = parseFloat(previousResult) + parseFloat(displayNumber)
-            outPut.innerHTML = previousResult
+            outPut.innerHTML = previousResult.toLocaleString("en-IN")
             break;
 
         case '-':
             previousResult = parseFloat(previousResult) - parseFloat(displayNumber)
-            outPut.innerHTML = previousResult
+            outPut.innerHTML = previousResult.toLocaleString("en-IN")
             break;
 
         case 'x':
@@ -147,7 +158,7 @@ const calculate = ( operator => {
 
         case '÷':                  
             previousResult = parseFloat(previousResult) / parseFloat(displayNumber)
-            outPut.innerHTML = previousResult
+            outPut.innerHTML = previousResult.toLocaleString("en-IN")
             break;
 
         case '%':
@@ -156,7 +167,8 @@ const calculate = ( operator => {
             break;    
 
         case '=':
-            outPut.innerHTML = previousResult
+            outPut.innerHTML = previousResult.toLocaleString("en-IN")
+            console.log(outPut);
             break;    
     
         default:
