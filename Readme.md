@@ -29,6 +29,12 @@ This calculator supports following basic arithmetic operations
 #### Exception Alerts
 
 
+### Pseudocode link
+
+[confluence page](https://prema-chhaya.atlassian.net/wiki/spaces/NOLOGYCOHO/pages/33121/Calculator+Pseudocode)
+
+
+
 
 
 
@@ -39,6 +45,9 @@ This calculator supports following basic arithmetic operations
 
 
 ![Test Run Report](tests.png)
+
+
+
 
 
 
